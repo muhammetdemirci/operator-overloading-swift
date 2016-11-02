@@ -68,7 +68,7 @@ s **= 5
 var w: Float = 4.56
 w **= 5
 
-//prefix kaldırılan ++ operatörü
+// kaldırılan ++ operatörü
 prefix func ++(number: inout Int) -> Int {
     let result = number + 1
     return result
