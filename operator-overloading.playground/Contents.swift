@@ -16,7 +16,7 @@ let u = "abc"
 let v = u * 5
 
 protocol Type {
-  func +=(inout lhs: Self, rhs: Self)
+  static func +=( lhs: inout Self, rhs: Self)
 }
 extension String: Type {}
 extension Int: Type {}
@@ -56,7 +56,7 @@ let m: Float = 4.56
 let n = m ** 5
 
 infix operator **= {associativity left precedence 150}
-func **=<T: Type>(inout lhs: T, rhs: Int) {
+func **=<T: Type>( lhs: inout T, rhs: Int) {
   lhs = lhs ** rhs
 }
 var o = "abc"
@@ -67,6 +67,23 @@ var s = 3.14
 s **= 5
 var w: Float = 4.56
 w **= 5
+
+//prefix kaldırılan ++ operatörü
+prefix func ++(number: inout Int) -> Int {
+    let result = number + 1
+    return result
+}
+
+var number1 = 3
+++number1
+
+postfix func ++(number: inout Int) -> Int {
+    let result = number + 1
+    return result
+}
+
+var number2 = 3
+number2++
 
 
 
